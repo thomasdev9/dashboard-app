@@ -9,4 +9,20 @@
 
 .sidebar-menu {
   background: rgb(28, 37, 54) !important;
+  color: rgb(157, 164, 174);
+}
+
+.sidebar-menu .ant-menu-item:hover {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+  color: rgb(157, 164, 174) !important;
+}
+
+.ant-menu .ant-menu-item {
+  transition: all 0.1s ease-in !important;
+  font-weight: 600 !important;
+}
+
+.ant-menu .ant-menu-item-selected {
+  background-color: rgba(255, 255, 255, 0.04) !important;
+  color: rgb(255, 255, 255) !important;
 }
