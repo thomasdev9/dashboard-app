@@ -3,8 +3,9 @@ import { Outlet } from 'react-router-dom';
 import { Layout } from 'antd';
 import MenuComponent from './menu-component';
 import Sidebar from './sidebar';
+import Topbar from './topbar';
 
-const { Content, Header } = Layout;
+const { Content } = Layout;
 
 const Menu = <MenuComponent />;
 
@@ -13,7 +14,7 @@ function LayoutComponent() {
     <Layout>
       <Sidebar menu={Menu} />
       <Layout className="main-container">
-        <Header />
+        <Topbar />
         <Content>
           <Outlet />
         </Content>
