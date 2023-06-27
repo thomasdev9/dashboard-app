@@ -1,12 +1,12 @@
-.main-container{
-    min-height: 100vh;
-    padding: 20px 50px;
+.main-container {
+  min-height: 100vh;
+  padding: 20px 50px;
 }
 
-.sidebar{
-    background: rgb(28, 37, 54) !important;
+.sidebar {
+  background: rgb(28, 37, 54) !important;
 }
 
-.sidebar-menu{
-    background: rgb(28, 37, 54) !important;
+.sidebar-menu {
+  background: rgb(28, 37, 54) !important;
 }
