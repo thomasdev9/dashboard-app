@@ -26,3 +26,20 @@
   background-color: rgba(255, 255, 255, 0.04) !important;
   color: rgb(255, 255, 255) !important;
 }
+
+.ant-layout-header {
+  background-color: rgb(245, 245, 245);
+  padding-inline: 0px;
+}
+
+@media only screen and (max-width: 992px) {
+  .ant-layout-header {
+    justify-content: space-between;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .main-container {
+    padding: 20px 25px;
+  }
+}

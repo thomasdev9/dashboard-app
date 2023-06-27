@@ -11,15 +11,10 @@ const LogoWrapper = styled.div`
   margin-bottom: 30px;
 `;
 
-const Logo = styled.a`
-  width: 40px;
-  height: 40px;
-`;
-
 const BrandWrapper = styled.div`
   background-color: rgba(255, 255, 255, 0.04);
   padding: 12px;
-  margin-bottom: 16px;
+  margin: 40px 0px 16px 0px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -46,9 +41,6 @@ function Sidebar({ menu }) {
   return (
     <Sider className="sidebar" breakpoint={'lg'} theme="light" collapsedWidth={0} trigger={null} width={250}>
       <LogoWrapper>
-        <Logo>
-          <img alt="logo" />
-        </Logo>
         <BrandWrapper>
           <BrandName>Elegent</BrandName>
           <BrandText>Dashboard</BrandText>
