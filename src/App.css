@@ -32,6 +32,10 @@
   padding-inline: 0px;
 }
 
+.ant-drawer-close {
+  color: rgb(255, 255, 255) !important;
+}
+
 @media only screen and (max-width: 992px) {
   .ant-layout-header {
     justify-content: space-between;
