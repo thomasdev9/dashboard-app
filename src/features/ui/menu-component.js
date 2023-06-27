@@ -1,13 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
-import {
-  HomeOutlined,
-  UserOutlined,
-  ShoppingOutlined,
-  LineChartOutlined,
-  SettingOutlined,
-  SkinOutlined,
-} from '@ant-design-icons';
+import { HomeOutlined, UserOutlined, ShoppingOutlined, LineChartOutlined, SettingOutlined } from '@ant-design/icons';
 
 function getItem(label, key, icon, children, type) {
   return {
@@ -20,37 +14,36 @@ function getItem(label, key, icon, children, type) {
 }
 
 const items = [
-  getItem(<a to="/">Αρχική</a>, 'home', <HomeOutlined style={{ fontSize: '14px', fontWeight: '400' }} />, null, null),
   getItem(
-    <a to="/customers">Πελάτες</a>,
+    <Link to="/">Home</Link>,
+    'home',
+    <HomeOutlined style={{ fontSize: '14px', fontWeight: '400' }} />,
+    null,
+    null
+  ),
+  getItem(
+    <Link to="/customers">Customers</Link>,
     'customers',
     <UserOutlined style={{ fontSize: '14px', fontWeight: '400' }} />,
     null,
     null
   ),
   getItem(
-    <a to="/orders">Παραγγελίες</a>,
+    <Link to="/orders">Orders</Link>,
     'orders',
     <ShoppingOutlined style={{ fontSize: '14px', fontWeight: '400' }} />,
     null,
     null
   ),
   getItem(
-    <a to="/products">Προϊόντα</a>,
-    'products',
-    <SkinOutlined style={{ fontSize: '14px', fontWeight: '400' }} />,
-    null,
-    null
-  ),
-  getItem(
-    <a to="/analytics">Αναλυτικά</a>,
+    <Link to="/analytics">Analytics</Link>,
     'analytics',
     <LineChartOutlined style={{ fontSize: '14px', fontWeight: '400' }} />,
     null,
     null
   ),
   getItem(
-    <a to="/settings">Ρυθμίσεις</a>,
+    <Link to="/settings">Settings</Link>,
     'settings',
     <SettingOutlined style={{ fontSize: '14px', fontWeight: '400' }} />,
     null,

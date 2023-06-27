@@ -30,7 +30,7 @@ function Sidebar({ menu }) {
     <Sider className="sidebar" breakpoint={'lg'} theme="light" collapsedWidth={0} trigger={null} width={250}>
       <LogoWrapper>
         <Logo>
-          <img />
+          <img alt="logo" />
         </Logo>
         <BrandName>Elegent</BrandName>
       </LogoWrapper>
