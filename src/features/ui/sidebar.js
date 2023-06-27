@@ -46,7 +46,7 @@ function Sidebar({ menu }) {
           <BrandText>Dashboard</BrandText>
         </BrandWrapper>
       </LogoWrapper>
-      <Divider />
+      <Divider style={{ background: 'rgb(157, 164, 174)' }} />
       {menu}
     </Sider>
   );

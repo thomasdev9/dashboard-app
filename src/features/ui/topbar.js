@@ -43,6 +43,10 @@ const MenuButton = styled.button`
   }
 `;
 
+const DrawerStyle = {
+  background: 'rgb(28, 37, 54)',
+};
+
 const { Header } = Layout;
 
 function Topbar() {
@@ -62,7 +66,7 @@ function Topbar() {
         <MenuButton onClick={showDrawer}>
           <MenuOutlined />
         </MenuButton>
-        <Drawer open={open} onClose={onClose} width={280} placement="left">
+        <Drawer open={open} onClose={onClose} width={280} placement="left" style={DrawerStyle}>
           <MenuComponent />
         </Drawer>
         <Logo>Elegent</Logo>
