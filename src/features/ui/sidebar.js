@@ -5,7 +5,7 @@ import styled from 'styled-components';
 const LogoWrapper = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
@@ -16,11 +16,28 @@ const Logo = styled.a`
   height: 40px;
 `;
 
-const BrandName = styled.span`
+const BrandWrapper = styled.div`
+  background-color: rgba(255, 255, 255, 0.04);
+  padding: 12px;
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  width: 80%;
+  border-radius: 10px;
+`;
+
+const BrandName = styled.h6`
+  font-size: 16px;
+  font-weight: 500;
+  color: rgb(255, 255, 255);
+`;
+
+const BrandText = styled.p`
+  color: rgb(157, 164, 174);
+  font-weight: 400;
   font-size: 14px;
-  font-weight: 700;
-  color: rgba(0, 0, 0, 0.88);
-  margin-left: 10px;
 `;
 
 const { Sider } = Layout;
@@ -32,7 +49,10 @@ function Sidebar({ menu }) {
         <Logo>
           <img alt="logo" />
         </Logo>
-        <BrandName>Elegent</BrandName>
+        <BrandWrapper>
+          <BrandName>Elegent</BrandName>
+          <BrandText>Dashboard</BrandText>
+        </BrandWrapper>
       </LogoWrapper>
       <Divider />
       {menu}

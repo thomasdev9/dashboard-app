@@ -17,35 +17,35 @@ const items = [
   getItem(
     <Link to="/">Home</Link>,
     'home',
-    <HomeOutlined style={{ fontSize: '14px', fontWeight: '400' }} />,
+    <HomeOutlined style={{ fontSize: '16px', fontWeight: '400' }} />,
     null,
     null
   ),
   getItem(
     <Link to="/customers">Customers</Link>,
     'customers',
-    <UserOutlined style={{ fontSize: '14px', fontWeight: '400' }} />,
+    <UserOutlined style={{ fontSize: '16px', fontWeight: '400' }} />,
     null,
     null
   ),
   getItem(
     <Link to="/orders">Orders</Link>,
     'orders',
-    <ShoppingOutlined style={{ fontSize: '14px', fontWeight: '400' }} />,
+    <ShoppingOutlined style={{ fontSize: '16px', fontWeight: '400' }} />,
     null,
     null
   ),
   getItem(
     <Link to="/analytics">Analytics</Link>,
     'analytics',
-    <LineChartOutlined style={{ fontSize: '14px', fontWeight: '400' }} />,
+    <LineChartOutlined style={{ fontSize: '16px', fontWeight: '400' }} />,
     null,
     null
   ),
   getItem(
     <Link to="/settings">Settings</Link>,
     'settings',
-    <SettingOutlined style={{ fontSize: '14px', fontWeight: '400' }} />,
+    <SettingOutlined style={{ fontSize: '16px', fontWeight: '400' }} />,
     null,
     null
   ),
