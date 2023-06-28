@@ -36,6 +36,19 @@
   color: rgb(255, 255, 255) !important;
 }
 
+.search-bar {
+  width: 50%;
+}
+
+.search-bar .ant-input-wrapper > input {
+  padding: 10px;
+}
+
+.ant-input-search-button {
+  height: 44px !important;
+  width: 44px !important;
+}
+
 @media only screen and (max-width: 992px) {
   .ant-layout-header {
     justify-content: space-between;
@@ -45,5 +58,9 @@
 @media only screen and (max-width: 600px) {
   .main-container {
     padding: 20px 25px;
+  }
+
+  .search-bar {
+    width: 100%;
   }
 }
