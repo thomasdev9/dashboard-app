@@ -2,7 +2,7 @@ import { api } from './configs/axios-configs';
 import { defineCancelApiObject } from './configs/axios-utils';
 
 export const ProductsAPI = {
-  getAllProducts: async function ({ cancel = false }) {
+  getAllProducts: async function (cancel = false) {
     const response = await api.request({
       url: '/products',
       method: 'GET',
@@ -15,44 +15,6 @@ export const ProductsAPI = {
       url: `/products/${id}`,
       method: 'GET',
       signal: cancel ? cancelApiObject[this.getSingleProduct.name].handleRequestCancellation().signal : undefined,
-    });
-    return response.data;
-  },
-  getProductsByLimit: async function ({ limit = '5', cancel = false }) {
-    const response = await api.request({
-      url: '/products',
-      method: 'GET',
-      params: {
-        limit: limit,
-      },
-      signal: cancel ? cancelApiObject[this.getProductsByLimit.name].handleRequestCancellation().signal : undefined,
-    });
-    return response.data;
-  },
-  getSortedProducts: async function ({ sort, cancel = false }) {
-    const response = await api.request({
-      url: '/products',
-      method: 'GET',
-      params: {
-        sort: sort,
-      },
-      signal: cancel ? cancelApiObject[this.getSortedProducts.name].handleRequestCancellation().signal : undefined,
-    });
-    return response.data;
-  },
-  getProductsCategories: async function ({ cancel = false }) {
-    const response = await api.request({
-      url: '/products/categories',
-      method: 'GET',
-      signal: cancel ? cancelApiObject[this.getProductsCategories.name].handleRequestCancellation().signal : undefined,
-    });
-    return response.data;
-  },
-  getProductsByCategory: async function ({ category, cancel = false }) {
-    const response = await api.request({
-      url: `/products/category/${category}`,
-      method: 'GET',
-      signal: cancel ? cancelApiObject[this.getProductsByCategory.name].handleRequestCancellation().signal : undefined,
     });
     return response.data;
   },
