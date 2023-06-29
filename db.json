@@ -463,7 +463,38 @@
       }
     }
   ],
-  "orders": [],
+  "orders": [
+    {
+      "id": "84973",
+      "price": "59.99$",
+      "date": "20/09/2022",
+      "address": "adams St 245, san Antonio"
+    },
+    {
+      "id": "95843",
+      "price": "39.99$",
+      "date": "12/04/2022",
+      "address": "saddle st 1342, fresno"
+    },
+    {
+      "id": "43876",
+      "price": "24.99$",
+      "date": "10/02/2022",
+      "address": "avondale ave 345, miami"
+    },
+    {
+      "id": "23876",
+      "price": "19.99$",
+      "date": "29/01/2022",
+      "address": "prospect st 124, el paso"
+    },
+    {
+      "id": "19086",
+      "price": "14.99$",
+      "date": "06/03/2022",
+      "address": "Lovers Ln 7267, kilcoole"
+    }
+  ],
   "settings": {
     "email": "johnroddey@gmail.com",
     "username": "John Roddey",
