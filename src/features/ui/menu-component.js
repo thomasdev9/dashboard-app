@@ -29,6 +29,13 @@ const items = [
     null
   ),
   getItem(
+    <Link to="/products">Products</Link>,
+    'products',
+    <UserOutlined style={{ fontSize: '16px', fontWeight: '400' }} />,
+    null,
+    null
+  ),
+  getItem(
     <Link to="/orders">Orders</Link>,
     'orders',
     <ShoppingOutlined style={{ fontSize: '16px', fontWeight: '400' }} />,
