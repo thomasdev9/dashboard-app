@@ -49,6 +49,11 @@
   width: 44px !important;
 }
 
+.ant-table-wrapper {
+  width: 100%;
+  padding: 25px 0px 0px 0px;
+}
+
 @media only screen and (max-width: 992px) {
   .ant-layout-header {
     justify-content: space-between;

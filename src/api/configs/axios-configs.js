@@ -5,6 +5,8 @@ export const api = axios.create({
   baseURL: 'https://fakestoreapi.com',
   headers: {
     'Content-Type': 'application/json',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Credentials': true,
   },
 });
 
