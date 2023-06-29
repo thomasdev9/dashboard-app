@@ -14,3 +14,12 @@ export const formatCustomersData = (data) => {
     address: formatAddress(customer?.address),
   }));
 };
+
+export const formatProductsData = (data) => {
+  return data?.map((product) => ({
+    title: product?.title,
+    price: product?.price,
+    category: product?.category,
+    image: product?.image,
+  }));
+};
