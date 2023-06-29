@@ -1,6 +1,9 @@
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Content from '../features/ui/content';
 import { Typography, Input, Table, Empty, Dropdown, Menu, Button } from 'antd';
 import { MoreOutlined, DeleteOutlined } from '@ant-design/icons';
+import { fetchOrders } from '../redux/slices/orders';
 
 const { Title } = Typography;
 const { Search } = Input;
@@ -16,6 +19,8 @@ const dropdownMenu = (
 );
 
 function Orders() {
+  const dispatch = useDispatch();
+  const dataSource = useSelector((state) => state.orders.data);
   const columns = [
     {
       title: 'ID',
@@ -52,6 +57,10 @@ function Orders() {
     },
   ];
 
+  useEffect(() => {
+    dispatch(fetchOrders());
+  }, []);
+
   return (
     <Content>
       <Title style={{ color: 'rgb(17, 25, 39)' }} level={2}>
@@ -59,7 +68,7 @@ function Orders() {
       </Title>
       <Search placeholder="Search Customers" className="search-bar" enterButton={false} addonAfter={false} />
       <Table
-        dataSource={[]}
+        dataSource={dataSource}
         columns={columns}
         scroll={{ x: true }}
         pagination={{ pageSize: 5, position: ['bottomCenter'] }}
