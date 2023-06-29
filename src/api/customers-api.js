@@ -2,7 +2,7 @@ import { api } from './configs/axios-configs';
 import { defineCancelApiObject } from './configs/axios-utils';
 
 export const CustomersAPI = {
-  getAllCustomers: async function ({ cancel = false }) {
+  getAllCustomers: async function (cancel = false) {
     const response = await api.request({
       url: '/customers',
       method: 'GET',

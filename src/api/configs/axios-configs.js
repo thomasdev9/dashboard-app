@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const api = axios.create({
   withCredentials: true,
-  baseURL: 'https://fakestoreapi.com',
+  baseURL: 'http://localhost:3030',
   headers: {
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
