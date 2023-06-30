@@ -22,7 +22,7 @@ export const ProductsAPI = {
     const response = await api.request({
       url: '/products',
       method: 'POST',
-      body: {
+      data: {
         ...data,
       },
       signal: cancel ? cancelApiObject[this.addProduct.name].handleRequestCancellation().signal : undefined,

@@ -3,9 +3,9 @@ import { Form, FormItem, Input, InputNumber, SubmitButton } from 'formik-antd';
 import UploadImage from './upload-image';
 import { Formik } from 'formik';
 
-function CreateForm({ fields, initialValues, validationSchema, className, layout, submitButton }) {
+function CreateForm({ fields, initialValues, validationSchema, className, layout, submitButton, handleSubmit }) {
   return (
-    <Formik initialValues={initialValues} validationSchema={validationSchema}>
+    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
       {({ setFieldValue }) => (
         <Form layout={layout} className={className}>
           {fields?.map((field) => {
