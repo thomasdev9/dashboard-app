@@ -20,7 +20,7 @@ const beforeUpload = (file) => {
   return isJpgOrPng && isLt2M;
 };
 
-function UploadImage() {
+function UploadImage({ setFieldValue }) {
   const [loading, setLoading] = useState(false);
   const [imageUrl, setImageUrl] = useState();
   const handleChange = (info) => {
@@ -33,6 +33,7 @@ function UploadImage() {
       getBase64(info.file.originFileObj, (url) => {
         setLoading(false);
         setImageUrl(url);
+        setFieldValue('image', url);
       });
     }
   };

@@ -5,10 +5,8 @@ import { Formik } from 'formik';
 
 function CreateForm({ fields, initialValues, validationSchema, className, layout, submitButton }) {
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      render={() => (
+    <Formik initialValues={initialValues} validationSchema={validationSchema}>
+      {({ setFieldValue }) => (
         <Form layout={layout} className={className}>
           {fields?.map((field) => {
             switch (field.type) {
@@ -27,7 +25,7 @@ function CreateForm({ fields, initialValues, validationSchema, className, layout
               case 'upload-image':
                 return (
                   <FormItem name={field.name} label={field.label}>
-                    <UploadImage />
+                    <UploadImage setFieldValue={setFieldValue} />
                   </FormItem>
                 );
               default:
@@ -43,7 +41,7 @@ function CreateForm({ fields, initialValues, validationSchema, className, layout
           </SubmitButton>
         </Form>
       )}
-    />
+    </Formik>
   );
 }
 
