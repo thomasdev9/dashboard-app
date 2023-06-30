@@ -58,9 +58,34 @@
   text-transform: capitalize;
 }
 
+.ant-card {
+  width: 100%;
+}
+
+.add-product-form {
+  width: 40%;
+}
+
+.add-product_submit-button {
+  background-color: rgb(99, 102, 241);
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 5px 0px;
+  width: 150px;
+  height: 40px;
+}
+
+.add-product_submit-button:hover {
+  background-color: rgb(67, 56, 202) !important;
+}
+
 @media only screen and (max-width: 992px) {
   .ant-layout-header {
     justify-content: space-between;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .add-product-form {
+    width: 70%;
   }
 }
 
@@ -70,6 +95,10 @@
   }
 
   .search-bar {
+    width: 100%;
+  }
+
+  .add-product-form {
     width: 100%;
   }
 }
