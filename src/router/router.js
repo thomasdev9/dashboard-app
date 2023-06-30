@@ -4,8 +4,8 @@ import Home from '../pages/home';
 import Orders from '../pages/orders';
 import Products from '../pages/products';
 import Customers from '../pages/customers';
+import AddProduct from '../pages/add-product';
 import Settings from '../pages/settings';
-import Analytics from '../pages/analytics';
 
 function Router() {
   return (
@@ -16,8 +16,8 @@ function Router() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/products" element={<Products />} />
           <Route path="/customers" element={<Customers />} />
+          <Route path="/add-product" element={<AddProduct />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/analytics" element={<Analytics />} />
         </Route>
       </Routes>
     </BrowserRouter>

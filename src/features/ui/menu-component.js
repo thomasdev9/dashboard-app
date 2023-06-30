@@ -1,7 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Menu } from 'antd';
-import { HomeOutlined, UserOutlined, ShoppingOutlined, LineChartOutlined, SettingOutlined } from '@ant-design/icons';
+import {
+  HomeOutlined,
+  UserOutlined,
+  ShoppingOutlined,
+  SkinOutlined,
+  PlusCircleOutlined,
+  SettingOutlined,
+} from '@ant-design/icons';
 
 function getItem(label, key, icon, children, type) {
   return {
@@ -31,7 +38,7 @@ const items = [
   getItem(
     <Link to="/products">Products</Link>,
     'products',
-    <UserOutlined style={{ fontSize: '16px', fontWeight: '400' }} />,
+    <SkinOutlined style={{ fontSize: '16px', fontWeight: '400' }} />,
     null,
     null
   ),
@@ -43,9 +50,9 @@ const items = [
     null
   ),
   getItem(
-    <Link to="/analytics">Analytics</Link>,
-    'analytics',
-    <LineChartOutlined style={{ fontSize: '16px', fontWeight: '400' }} />,
+    <Link to="/add-product">Add Product</Link>,
+    'add-product',
+    <PlusCircleOutlined style={{ fontSize: '16px', fontWeight: '400' }} />,
     null,
     null
   ),
