@@ -43,7 +43,7 @@ function UploadImage({ setFieldValue, values }) {
           marginTop: 8,
         }}
       >
-        Επιλέξτε
+        Upload
       </div>
     </div>
   );
