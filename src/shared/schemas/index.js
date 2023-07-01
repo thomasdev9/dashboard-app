@@ -29,3 +29,14 @@ export const customerSchema = yup.object().shape({
     .required('Required'),
   phone: yup.string().min(14, 'Must be exactly 14 characters').max(14, 'Must be exactly 14 characters'),
 });
+
+export const settingsSchema = yup.object().shape({
+  email: yup.string().email('Email must be valid').required('Required'),
+  username: yup
+    .string()
+    .min(2, 'Must contain at least 2 characters')
+    .max(20, 'Must contain a maximum of 20 characters')
+    .required('Required'),
+  phone: yup.string().min(14, 'Must be exactly 14 characters').max(14, 'Must be exactly 14 characters'),
+  image: yup.mixed().required('Required'),
+});
