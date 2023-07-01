@@ -20,9 +20,8 @@ const beforeUpload = (file) => {
   return isJpgOrPng && isLt2M;
 };
 
-function UploadImage({ setFieldValue }) {
+function UploadImage({ setFieldValue, values }) {
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState();
   const handleChange = (info) => {
     if (info.file.status === 'uploading') {
       setLoading(true);
@@ -32,7 +31,6 @@ function UploadImage({ setFieldValue }) {
       // Get this url from response in real world.
       getBase64(info.file.originFileObj, (url) => {
         setLoading(false);
-        setImageUrl(url);
         setFieldValue('image', url);
       });
     }
@@ -60,9 +58,9 @@ function UploadImage({ setFieldValue }) {
       beforeUpload={beforeUpload}
       onChange={handleChange}
     >
-      {imageUrl ? (
+      {values?.image ? (
         <img
-          src={imageUrl}
+          src={values?.image}
           alt="avatar"
           style={{
             width: '100%',

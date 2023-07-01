@@ -77,6 +77,14 @@
   background-color: rgb(67, 56, 202) !important;
 }
 
+.edit-customer_submit-button {
+  background-color: rgb(99, 102, 241);
+}
+
+.edit-customer_submit-button:hover {
+  background-color: rgb(67, 56, 202) !important;
+}
+
 @media only screen and (max-width: 992px) {
   .ant-layout-header {
     justify-content: space-between;

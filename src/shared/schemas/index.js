@@ -14,3 +14,18 @@ export const addProductSchema = yup.object().shape({
     .required('Required'),
   image: yup.mixed().required('Required'),
 });
+
+export const customerSchema = yup.object().shape({
+  name: yup
+    .string()
+    .min(2, 'Must contain at least 2 characters')
+    .max(20, 'Must contain a maximum of 20 characters')
+    .required('Required'),
+  email: yup.string().email('Email must be valid').required('Required'),
+  address: yup
+    .string()
+    .min(2, 'Must contain at least 2 characters')
+    .max(20, 'Must contain a maximum of 20 characters')
+    .required('Required'),
+  phone: yup.string().min(14, 'Must be exactly 14 characters').max(14, 'Must be exactly 14 characters'),
+});

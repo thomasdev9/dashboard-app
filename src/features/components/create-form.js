@@ -6,7 +6,7 @@ import { Formik } from 'formik';
 function CreateForm({ fields, initialValues, validationSchema, className, layout, submitButton, handleSubmit }) {
   return (
     <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit}>
-      {({ setFieldValue }) => (
+      {({ setFieldValue, values }) => (
         <Form layout={layout} className={className}>
           {fields?.map((field) => {
             switch (field.type) {
@@ -25,7 +25,7 @@ function CreateForm({ fields, initialValues, validationSchema, className, layout
               case 'upload-image':
                 return (
                   <FormItem name={field.name} label={field.label}>
-                    <UploadImage setFieldValue={setFieldValue} />
+                    <UploadImage setFieldValue={setFieldValue} values={values} />
                   </FormItem>
                 );
               default:

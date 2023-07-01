@@ -33,7 +33,7 @@ export const ProductsAPI = {
     const response = await api.request({
       url: `/products/${id}`,
       method: 'PUT',
-      body: {
+      data: {
         ...data,
       },
       signal: cancel ? cancelApiObject[this.updateProduct.name].handleRequestCancellation().signal : undefined,
