@@ -22,7 +22,7 @@ export const CustomersAPI = {
     const response = await api.request({
       url: '/customers',
       method: 'POST',
-      body: {
+      data: {
         ...data,
       },
       signal: cancel ? cancelApiObject[this.addCustomer.name].handleRequestCancellation().signal : undefined,
@@ -33,7 +33,7 @@ export const CustomersAPI = {
     const response = await api.request({
       url: `/customers/${id}`,
       method: 'PUT',
-      body: {
+      data: {
         ...data,
       },
       signal: cancel ? cancelApiObject[this.updateCustomer.name].handleRequestCancellation().signal : undefined,
