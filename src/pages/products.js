@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Content from '../features/ui/content';
@@ -7,6 +7,9 @@ import { MoreOutlined, EditOutlined, DeleteOutlined, ExclamationCircleFilled } f
 import { fetchProducts } from '../redux/slices/products';
 import { formatProductsData } from '../shared/utils';
 import { ProductsAPI } from '../api/products-api';
+import CreateFormModal from '../features/components/create-form-modal';
+import CreateForm from '../features/components/create-form';
+import { editProductData } from '../shared/setup/products';
 
 const ProductsImg = styled.img`
   width: 70px;
@@ -20,6 +23,8 @@ const { confirm } = Modal;
 function products() {
   const dispatch = useDispatch();
   const dataSource = useSelector((state) => state.products.data);
+  const [open, setOpen] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(0);
   const columns = [
     {
       title: 'IMAGE',
@@ -80,10 +85,24 @@ function products() {
     });
   };
 
+  const handleSubmit = (values, { resetForm }) => {
+    ProductsAPI.updateProduct({ id: selectedProduct, data: values }).then(() => {
+      dispatch(fetchProducts());
+      resetForm({ values: '' });
+      message.success('Product successfully updated.');
+    });
+  };
+
   const dropdownMenu = (record) => (
     <Menu>
       <Menu.Item key="0">
-        <Button type="link">
+        <Button
+          type="link"
+          onClick={() => {
+            setSelectedProduct(record?.id);
+            setOpen(true);
+          }}
+        >
           <EditOutlined /> Επεξεργασία
         </Button>
       </Menu.Item>
@@ -101,6 +120,12 @@ function products() {
         Products
       </Title>
       <Search placeholder="Search Customers" className="search-bar" />
+      <CreateFormModal
+        title="Product Data"
+        open={open}
+        setOpen={setOpen}
+        form={<CreateForm {...editProductData} handleSubmit={handleSubmit} />}
+      />
       <Table
         dataSource={formatProductsData(dataSource)}
         columns={columns}

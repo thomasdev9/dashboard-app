@@ -1,17 +1,21 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Content from '../features/ui/content';
 import { Typography, Input, Table, Empty, Dropdown, Menu, Button, Modal, message } from 'antd';
 import { MoreOutlined, EditOutlined, DeleteOutlined, ExclamationCircleFilled } from '@ant-design/icons';
 import { fetchCustomers } from '../redux/slices/customers';
-import { formatCustomersData } from '../shared/utils';
 import { CustomersAPI } from '../api/customers-api';
+import { editCustomerData } from '../shared/setup/customers';
+import CreateFormModal from '../features/components/create-form-modal';
+import CreateForm from '../features/components/create-form';
 
 const { Title } = Typography;
 const { Search } = Input;
 const { confirm } = Modal;
 
 function Customers() {
+  const [open, setOpen] = useState(false);
+  const [selectedCustomer, setSelectedCustomer] = useState('');
   const dispatch = useDispatch();
   const dataSource = useSelector((state) => state.customers.data);
   const columns = [
@@ -54,6 +58,14 @@ function Customers() {
     dispatch(fetchCustomers());
   }, []);
 
+  const handleSubmit = (values, { resetForm }) => {
+    CustomersAPI.updateCustomer({ id: selectedCustomer, data: values }).then(() => {
+      dispatch(fetchCustomers());
+      resetForm({ values: '' });
+      message.success('Customer successfully updated.');
+    });
+  };
+
   const showConfirm = (record) => {
     confirm({
       title: 'Are you sure you want to delete this customer?',
@@ -75,7 +87,13 @@ function Customers() {
     return (
       <Menu>
         <Menu.Item key="0">
-          <Button type="link">
+          <Button
+            type="link"
+            onClick={() => {
+              setOpen(true);
+              setSelectedCustomer(record?.id);
+            }}
+          >
             <EditOutlined /> Επεξεργασία
           </Button>
         </Menu.Item>
@@ -94,8 +112,14 @@ function Customers() {
         Customers
       </Title>
       <Search placeholder="Search Customers" className="search-bar" enterButton={false} addonAfter={false} />
+      <CreateFormModal
+        title="Customer Data"
+        open={open}
+        setOpen={setOpen}
+        form={<CreateForm {...editCustomerData} handleSubmit={handleSubmit} />}
+      />
       <Table
-        dataSource={formatCustomersData(dataSource)}
+        dataSource={dataSource}
         columns={columns}
         scroll={{ x: true }}
         pagination={{ pageSize: 5, position: ['bottomCenter'] }}
