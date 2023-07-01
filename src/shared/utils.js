@@ -8,6 +8,7 @@ const formatAddress = (address) => {
 
 export const formatCustomersData = (data) => {
   return data?.map((customer) => ({
+    id: customer?.id,
     name: formatName(customer?.name),
     email: customer?.email,
     phone: customer?.phone,
@@ -17,6 +18,7 @@ export const formatCustomersData = (data) => {
 
 export const formatProductsData = (data) => {
   return data?.map((product) => ({
+    id: product?.id,
     title: product?.title,
     price: product?.price,
     category: product?.category,

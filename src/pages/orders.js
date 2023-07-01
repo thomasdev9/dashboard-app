@@ -1,22 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Content from '../features/ui/content';
-import { Typography, Input, Table, Empty, Dropdown, Menu, Button } from 'antd';
-import { MoreOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Typography, Input, Table, Empty, Dropdown, Menu, Button, Modal, message } from 'antd';
+import { MoreOutlined, DeleteOutlined, ExclamationCircleFilled } from '@ant-design/icons';
 import { fetchOrders } from '../redux/slices/orders';
+import { OrdersAPI } from '../api/orders-api';
 
 const { Title } = Typography;
 const { Search } = Input;
-
-const dropdownMenu = (
-  <Menu>
-    <Menu.Item key="1">
-      <Button type="link" danger>
-        <DeleteOutlined /> Διαγραφή
-      </Button>
-    </Menu.Item>
-  </Menu>
-);
+const { confirm } = Modal;
 
 function Orders() {
   const dispatch = useDispatch();
@@ -45,9 +37,9 @@ function Orders() {
     {
       title: 'ACTIONS',
       name: 'actions',
-      render: () => {
+      render: (record) => {
         return (
-          <Dropdown overlay={dropdownMenu} trigger={['hover']}>
+          <Dropdown overlay={dropdownMenu(record)} trigger={['hover']}>
             <Button className="ant-dropdown-link" onClick={(e) => e.preventDefault()} type="link">
               <MoreOutlined style={{ fontSize: '20px' }} />
             </Button>
@@ -60,6 +52,33 @@ function Orders() {
   useEffect(() => {
     dispatch(fetchOrders());
   }, []);
+
+  const showConfirm = (record) => {
+    confirm({
+      title: 'Are you sure you want to delete this customer?',
+      icon: <ExclamationCircleFilled />,
+      content: 'In case of deletion, the action is irreversible.',
+      okText: 'Διαγραφή',
+      okType: 'danger',
+      cancelText: 'Cancel',
+      onOk() {
+        OrdersAPI.deleteOrder({ id: record?.id }).then(() => {
+          dispatch(fetchOrders());
+          message.success('Order successfully deleted.');
+        });
+      },
+    });
+  };
+
+  const dropdownMenu = (record) => (
+    <Menu>
+      <Menu.Item key="1">
+        <Button type="link" danger onClick={() => showConfirm(record)}>
+          <DeleteOutlined /> Διαγραφή
+        </Button>
+      </Menu.Item>
+    </Menu>
+  );
 
   return (
     <Content>

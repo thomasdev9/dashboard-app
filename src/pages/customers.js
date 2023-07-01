@@ -1,28 +1,15 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Content from '../features/ui/content';
-import { Typography, Input, Table, Empty, Dropdown, Menu, Button } from 'antd';
-import { MoreOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
+import { Typography, Input, Table, Empty, Dropdown, Menu, Button, Modal, message } from 'antd';
+import { MoreOutlined, EditOutlined, DeleteOutlined, ExclamationCircleFilled } from '@ant-design/icons';
 import { fetchCustomers } from '../redux/slices/customers';
 import { formatCustomersData } from '../shared/utils';
+import { CustomersAPI } from '../api/customers-api';
 
 const { Title } = Typography;
 const { Search } = Input;
-
-const dropdownMenu = (
-  <Menu>
-    <Menu.Item key="0">
-      <Button type="link">
-        <EditOutlined /> Επεξεργασία
-      </Button>
-    </Menu.Item>
-    <Menu.Item key="1">
-      <Button type="link" danger>
-        <DeleteOutlined /> Διαγραφή
-      </Button>
-    </Menu.Item>
-  </Menu>
-);
+const { confirm } = Modal;
 
 function Customers() {
   const dispatch = useDispatch();
@@ -51,9 +38,9 @@ function Customers() {
     {
       title: 'ACTIONS',
       key: 'actions',
-      render: () => {
+      render: (record) => {
         return (
-          <Dropdown overlay={dropdownMenu} trigger={['hover']}>
+          <Dropdown overlay={dropdownMenu(record)} trigger={['hover']}>
             <Button className="ant-dropdown-link" onClick={(e) => e.preventDefault()} type="link">
               <MoreOutlined style={{ fontSize: '20px' }} />
             </Button>
@@ -66,6 +53,40 @@ function Customers() {
   useEffect(() => {
     dispatch(fetchCustomers());
   }, []);
+
+  const showConfirm = (record) => {
+    confirm({
+      title: 'Are you sure you want to delete this customer?',
+      icon: <ExclamationCircleFilled />,
+      content: 'In case of deletion, the action is irreversible.',
+      okText: 'Διαγραφή',
+      okType: 'danger',
+      cancelText: 'Cancel',
+      onOk() {
+        CustomersAPI.deleteCustomer({ id: record?.id }).then(() => {
+          dispatch(fetchCustomers());
+          message.success('Customer successfully deleted.');
+        });
+      },
+    });
+  };
+
+  const dropdownMenu = (record) => {
+    return (
+      <Menu>
+        <Menu.Item key="0">
+          <Button type="link">
+            <EditOutlined /> Επεξεργασία
+          </Button>
+        </Menu.Item>
+        <Menu.Item key="1">
+          <Button type="link" danger onClick={() => showConfirm(record)}>
+            <DeleteOutlined /> Διαγραφή
+          </Button>
+        </Menu.Item>
+      </Menu>
+    );
+  };
 
   return (
     <Content>
