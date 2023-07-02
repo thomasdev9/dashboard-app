@@ -26,3 +26,26 @@ export const cardsData = [
     value: 18,
   },
 ];
+
+export const columns = [
+  {
+    title: 'ID',
+    name: 'id',
+    dataIndex: 'id',
+  },
+  {
+    title: 'PRICE',
+    name: 'price',
+    dataIndex: 'price',
+  },
+  {
+    title: 'DATE',
+    name: 'date',
+    dataIndex: 'date',
+  },
+  {
+    title: 'ADDRESS',
+    name: 'address',
+    dataIndex: 'address',
+  },
+];
