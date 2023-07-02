@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Layout, Badge, Space, Avatar, Drawer } from 'antd';
-import { MenuOutlined, BellFilled, SettingFilled, UserOutlined } from '@ant-design/icons';
+import { Layout, Space, Avatar, Drawer } from 'antd';
+import { MenuOutlined, UserOutlined } from '@ant-design/icons';
 import MenuComponent from '../ui/menu-component';
 
 const HeaderWrapper = styled.div`
@@ -71,10 +71,6 @@ function Topbar() {
         </Drawer>
         <Logo>Elegent</Logo>
         <Space size={16} wrap>
-          <SettingFilled style={{ fontSize: '20px', color: '#3d5176' }} />
-          <Badge count={5} size="small">
-            <BellFilled style={{ fontSize: '20px', color: '#3d5176' }} />
-          </Badge>
           <Avatar icon={<UserOutlined />} />
         </Space>
       </HeaderWrapper>
