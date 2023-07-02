@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Content from '../features/ui/content';
-import { Typography, Input, Table, Empty, Dropdown, Menu, Button, Modal, message } from 'antd';
+import { Typography, Table, Empty, Dropdown, Menu, Button, Modal, message } from 'antd';
 import { MoreOutlined, EditOutlined, DeleteOutlined, ExclamationCircleFilled } from '@ant-design/icons';
 import { fetchProducts } from '../redux/slices/products';
 import { formatProductsData } from '../shared/utils';
@@ -10,6 +10,7 @@ import { ProductsAPI } from '../api/products-api';
 import CreateFormModal from '../features/components/create-form-modal';
 import CreateForm from '../features/components/create-form';
 import { editProductData } from '../shared/setup/products';
+import LoadingSpinner from '../features/ui/loading-spinner';
 
 const ProductsImg = styled.img`
   width: 70px;
@@ -17,12 +18,12 @@ const ProductsImg = styled.img`
 `;
 
 const { Title } = Typography;
-const { Search } = Input;
 const { confirm } = Modal;
 
 function products() {
   const dispatch = useDispatch();
   const dataSource = useSelector((state) => state.products.data);
+  const isLoading = useSelector((state) => state.products.loading);
   const [open, setOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(0);
   const columns = [
@@ -119,20 +120,23 @@ function products() {
       <Title style={{ color: 'rgb(17, 25, 39)' }} level={2}>
         Products
       </Title>
-      <Search placeholder="Search Customers" className="search-bar" />
       <CreateFormModal
         title="Product Data"
         open={open}
         setOpen={setOpen}
         form={<CreateForm {...editProductData} handleSubmit={handleSubmit} />}
       />
-      <Table
-        dataSource={formatProductsData(dataSource)}
-        columns={columns}
-        scroll={{ x: true }}
-        pagination={{ pageSize: 5, position: ['bottomCenter'] }}
-        locale={{ emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={'No orders found'} /> }}
-      />
+      {!isLoading ? (
+        <Table
+          dataSource={formatProductsData(dataSource)}
+          columns={columns}
+          scroll={{ x: true }}
+          pagination={{ pageSize: 5, position: ['bottomCenter'] }}
+          locale={{ emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={'No orders found'} /> }}
+        />
+      ) : (
+        <LoadingSpinner message="Loading products..." />
+      )}
     </Content>
   );
 }
