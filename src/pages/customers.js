@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Content from '../features/ui/content';
-import { Typography, Input, Table, Empty, Dropdown, Menu, Button, Modal, message } from 'antd';
+import { Typography, Table, Empty, Dropdown, Menu, Button, Modal, message } from 'antd';
 import { MoreOutlined, EditOutlined, DeleteOutlined, ExclamationCircleFilled } from '@ant-design/icons';
 import { fetchCustomers } from '../redux/slices/customers';
 import { CustomersAPI } from '../api/customers-api';
 import { editCustomerData } from '../shared/setup/customers';
 import CreateFormModal from '../features/components/create-form-modal';
 import CreateForm from '../features/components/create-form';
+import LoadingSpinner from '../features/ui/loading-spinner';
 
 const { Title } = Typography;
-const { Search } = Input;
 const { confirm } = Modal;
 
 function Customers() {
@@ -18,6 +18,7 @@ function Customers() {
   const [selectedCustomer, setSelectedCustomer] = useState('');
   const dispatch = useDispatch();
   const dataSource = useSelector((state) => state.customers.data);
+  const isLoading = useSelector((state) => state.customers.loading);
   const columns = [
     {
       title: 'NAME',
@@ -111,20 +112,23 @@ function Customers() {
       <Title style={{ color: 'rgb(17, 25, 39)' }} level={2}>
         Customers
       </Title>
-      <Search placeholder="Search Customers" className="search-bar" enterButton={false} addonAfter={false} />
       <CreateFormModal
         title="Customer Data"
         open={open}
         setOpen={setOpen}
         form={<CreateForm {...editCustomerData} handleSubmit={handleSubmit} />}
       />
-      <Table
-        dataSource={dataSource}
-        columns={columns}
-        scroll={{ x: true }}
-        pagination={{ pageSize: 5, position: ['bottomCenter'] }}
-        locale={{ emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={'No customers found'} /> }}
-      />
+      {!isLoading ? (
+        <Table
+          dataSource={dataSource}
+          columns={columns}
+          scroll={{ x: true }}
+          pagination={{ pageSize: 5, position: ['bottomCenter'] }}
+          locale={{ emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={'No customers found'} /> }}
+        />
+      ) : (
+        <LoadingSpinner message="Loading customers..." />
+      )}
     </Content>
   );
 }

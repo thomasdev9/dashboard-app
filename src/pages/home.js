@@ -9,6 +9,7 @@ import { fetchProducts } from '../redux/slices/products';
 import { fetchCustomers } from '../redux/slices/customers';
 import { fetchOrders } from '../redux/slices/orders';
 import { slice } from 'lodash';
+import LoadingSpinner from '../features/ui/loading-spinner';
 
 const CardWrapper = styled.div`
   width: 100%;
@@ -55,21 +56,27 @@ function Home() {
       <Title style={{ color: 'rgb(17, 25, 39)' }} level={2}>
         Home
       </Title>
-      <CardWrapper>
-        {cardsData?.map((card, index) => (
-          <CreateCard {...card} key={index} value={getValue(index)} />
-        ))}
-      </CardWrapper>
-      <Title style={{ color: 'rgb(17, 25, 39)', paddingTop: '20px', marginBottom: '0px' }} level={4}>
-        Recent Orders
-      </Title>
-      <Table
-        dataSource={slice(orders, 0, 5)}
-        columns={columns}
-        scroll={{ x: true }}
-        pagination={false}
-        locale={{ emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={'No orders found'} /> }}
-      />
+      {orders && customers && products ? (
+        <>
+          <CardWrapper>
+            {cardsData?.map((card, index) => (
+              <CreateCard {...card} key={index} value={getValue(index)} />
+            ))}
+          </CardWrapper>
+          <Title style={{ color: 'rgb(17, 25, 39)', paddingTop: '20px', marginBottom: '0px' }} level={4}>
+            Recent Orders
+          </Title>
+          <Table
+            dataSource={slice(orders, 0, 5)}
+            columns={columns}
+            scroll={{ x: true }}
+            pagination={false}
+            locale={{ emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={'No orders found'} /> }}
+          />
+        </>
+      ) : (
+        <LoadingSpinner message="Loading data..." />
+      )}
     </Content>
   );
 }
