@@ -21,7 +21,7 @@ function AddProduct() {
   return (
     <Content>
       <Title style={{ color: 'rgb(17, 25, 39)' }} level={2}>
-        Add new product
+        Add Product
       </Title>
       <Card title="Product Data">
         <CreateForm {...formData} handleSubmit={handleSubmit} />
