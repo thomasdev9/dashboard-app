@@ -2,12 +2,13 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import Content from '../features/ui/content';
-import { Typography } from 'antd';
+import { Typography, Table, Empty } from 'antd';
 import CreateCard from '../features/components/create-card';
-import { cardsData } from '../shared/setup/home';
+import { cardsData, columns } from '../shared/setup/home';
 import { fetchProducts } from '../redux/slices/products';
 import { fetchCustomers } from '../redux/slices/customers';
 import { fetchOrders } from '../redux/slices/orders';
+import { slice } from 'lodash';
 
 const CardWrapper = styled.div`
   width: 100%;
@@ -59,6 +60,16 @@ function Home() {
           <CreateCard {...card} key={index} value={getValue(index)} />
         ))}
       </CardWrapper>
+      <Title style={{ color: 'rgb(17, 25, 39)', paddingTop: '20px', marginBottom: '0px' }} level={4}>
+        Recent Orders
+      </Title>
+      <Table
+        dataSource={slice(orders, 0, 5)}
+        columns={columns}
+        scroll={{ x: true }}
+        pagination={false}
+        locale={{ emptyText: <Empty image={Empty.PRESENTED_IMAGE_SIMPLE} description={'No orders found'} /> }}
+      />
     </Content>
   );
 }
