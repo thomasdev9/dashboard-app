@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { Layout, Space, Avatar, Drawer } from 'antd';
-import { MenuOutlined, UserOutlined } from '@ant-design/icons';
+import { MenuOutlined } from '@ant-design/icons';
 import MenuComponent from '../ui/menu-component';
+import { fetchSettings } from '../../redux/slices/settings';
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -47,10 +49,39 @@ const DrawerStyle = {
   background: 'rgb(28, 37, 54)',
 };
 
+const UserInfoWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  @media only screen and (max-width: 850px) {
+    display: none;
+  }
+`;
+
+const Username = styled.p`
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(17, 25, 39);
+  line-height: 22px;
+`;
+
+const UserEmail = styled.p`
+  font-size: 14px;
+  font-weight: 500;
+  color: rgb(108, 115, 127);
+  line-height: 22px;
+`;
+
 const { Header } = Layout;
 
 function Topbar() {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+  const image = useSelector((state) => state.settings.data.image);
+  const email = useSelector((state) => state.settings.data.email);
+  const username = useSelector((state) => state.settings.data.username);
 
   const showDrawer = () => {
     setOpen(true);
@@ -59,6 +90,10 @@ function Topbar() {
   const onClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    dispatch(fetchSettings());
+  }, []);
 
   return (
     <Header>
@@ -71,7 +106,11 @@ function Topbar() {
         </Drawer>
         <Logo>Elegent</Logo>
         <Space size={16} wrap>
-          <Avatar icon={<UserOutlined />} />
+          <Avatar src={image} />
+          <UserInfoWrapper>
+            <Username>{username}</Username>
+            <UserEmail>{email}</UserEmail>
+          </UserInfoWrapper>
         </Space>
       </HeaderWrapper>
     </Header>
