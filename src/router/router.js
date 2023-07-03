@@ -8,6 +8,7 @@ import AddProduct from '../pages/add-product';
 import Settings from '../pages/settings';
 import AddCustomer from '../pages/add-customer';
 import AddOrder from '../pages/add-order';
+import NotFound from '../pages/not-found';
 
 function Router() {
   return (
@@ -23,6 +24,7 @@ function Router() {
           <Route path="/add-customer" element={<AddCustomer />} />
           <Route path="/add-order" element={<AddOrder />} />
         </Route>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );
