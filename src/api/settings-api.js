@@ -11,6 +11,14 @@ export const SettingsAPI = {
     });
     return response.data;
   },
+  getSettings: async function (cancel = false) {
+    const response = await api.request({
+      url: '/settings',
+      method: 'GET',
+      signal: cancel ? cancelApiObject[this.getSettings.name].handleRequestCancellation().signal : undefined,
+    });
+    return response.data;
+  },
 };
 
 const cancelApiObject = defineCancelApiObject(SettingsAPI);
