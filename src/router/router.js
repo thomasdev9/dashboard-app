@@ -7,6 +7,7 @@ import Customers from '../pages/customers';
 import AddProduct from '../pages/add-product';
 import Settings from '../pages/settings';
 import AddCustomer from '../pages/add-customer';
+import AddOrder from '../pages/add-order';
 
 function Router() {
   return (
@@ -20,6 +21,7 @@ function Router() {
           <Route path="/add-product" element={<AddProduct />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/add-customer" element={<AddCustomer />} />
+          <Route path="/add-order" element={<AddOrder />} />
         </Route>
       </Routes>
     </BrowserRouter>

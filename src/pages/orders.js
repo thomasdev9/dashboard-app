@@ -1,14 +1,44 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import Content from '../features/ui/content';
 import { Typography, Table, Empty, Dropdown, Menu, Button, Modal, message } from 'antd';
-import { MoreOutlined, DeleteOutlined, ExclamationCircleFilled } from '@ant-design/icons';
+import { MoreOutlined, DeleteOutlined, ExclamationCircleFilled, PlusOutlined } from '@ant-design/icons';
 import { fetchOrders } from '../redux/slices/orders';
 import { OrdersAPI } from '../api/orders-api';
 import LoadingSpinner from '../features/ui/loading-spinner';
 
 const { Title } = Typography;
 const { confirm } = Modal;
+
+const HeaderWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const AddButton = styled.button`
+  background: rgb(99, 102, 241);
+  border-radius: 12px;
+  color: rgb(255, 255, 255);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 90px;
+  height: 40px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+
+  &:hover {
+    background-color: rgb(67, 56, 202);
+  }
+`;
 
 function Orders() {
   const dispatch = useDispatch();
@@ -83,9 +113,16 @@ function Orders() {
 
   return (
     <Content>
-      <Title style={{ color: 'rgb(17, 25, 39)' }} level={2}>
-        Orders
-      </Title>
+      <HeaderWrapper>
+        <Title style={{ color: 'rgb(17, 25, 39)' }} level={2}>
+          Orders
+        </Title>
+        <Link to="/add-order">
+          <AddButton>
+            <PlusOutlined style={{ marginRight: '5px' }} /> Add
+          </AddButton>
+        </Link>
+      </HeaderWrapper>
       {!isLoading ? (
         <Table
           dataSource={dataSource}
