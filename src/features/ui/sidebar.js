@@ -42,7 +42,7 @@ function Sidebar({ menu }) {
     <Sider className="sidebar" breakpoint={'lg'} theme="light" collapsedWidth={0} trigger={null} width={250}>
       <LogoWrapper>
         <BrandWrapper>
-          <BrandName>Elegent</BrandName>
+          <BrandName>Elegant</BrandName>
           <BrandText>Dashboard</BrandText>
         </BrandWrapper>
       </LogoWrapper>
