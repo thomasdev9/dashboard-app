@@ -14,7 +14,7 @@ export const editProductData = {
   className: 'edit-product-form',
   submitButton: {
     text: 'Edit Product',
-    className: 'edit-customer_submit-button',
+    className: 'edit-customer__submit-button',
   },
   fields: [
     {
