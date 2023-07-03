@@ -10,9 +10,9 @@ export const OrdersAPI = {
     });
     return response.data;
   },
-  addOrder: async function ({ id, data, cancel = false }) {
+  addOrder: async function ({ data, cancel = false }) {
     const response = await api.request({
-      url: `/orders/${id}`,
+      url: `/orders`,
       method: 'POST',
       data: { ...data },
       signal: cancel ? cancelApiObject[this.addOrder.name].handleRequestCancellation().signal : undefined,

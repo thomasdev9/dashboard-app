@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const addProductSchema = yup.object().shape({
+export const productSchema = yup.object().shape({
   title: yup
     .string()
     .min(2, 'Must contain at least 2 characters')
@@ -43,4 +43,18 @@ export const settingsSchema = yup.object().shape({
     .required('Required'),
   phone: yup.string().min(14, 'Must be exactly 14 characters').max(14, 'Must be exactly 14 characters'),
   image: yup.mixed().required('Required'),
+});
+
+export const orderSchema = yup.object().shape({
+  id: yup
+    .string()
+    .min(4, 'Must contain at least 2 characters')
+    .max(8, 'Must contain a maximum of 20 characters')
+    .required('Required'),
+  price: yup.number().positive('Must be positive number').required('Required'),
+  address: yup
+    .string()
+    .min(2, 'Must contain at least 2 characters')
+    .max(40, 'Must contain a maximum of 40 characters')
+    .required('Required'),
 });

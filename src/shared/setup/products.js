@@ -1,4 +1,4 @@
-import { addProductSchema } from '../schemas';
+import { productSchema } from '../schemas';
 
 const initialValues = {
   image: null,
@@ -9,7 +9,7 @@ const initialValues = {
 
 export const editProductData = {
   initialValues: initialValues,
-  validationSchema: addProductSchema,
+  validationSchema: productSchema,
   layout: 'vertical',
   className: 'edit-product-form',
   submitButton: {

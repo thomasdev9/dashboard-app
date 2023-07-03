@@ -1,43 +1,36 @@
-import { customerSchema } from '../schemas';
+import { orderSchema } from '../schemas';
 
 const initialValues = {
-  title: '',
-  image: '',
+  id: '',
   price: 0.0,
-  category: '',
+  address: '',
 };
 
 export const formData = {
   initialValues: initialValues,
-  validationSchema: customerSchema,
+  validationSchema: orderSchema,
   layout: 'vertical',
   className: 'add-form',
   submitButton: {
-    text: 'Add Customer',
-    className: 'add-form_submit-button',
+    text: 'Add Order',
+    className: 'add-form__submit-button',
   },
   fields: [
     {
-      name: 'name',
-      label: 'Name',
+      name: 'id',
+      label: 'Id',
       type: 'string',
       showValidateSuccess: true,
     },
     {
-      name: 'email',
-      label: 'Email',
-      type: 'string',
+      name: 'price',
+      label: 'Price',
+      type: 'number',
       showValidateSuccess: true,
     },
     {
       name: 'address',
       label: 'Address',
-      type: 'string',
-      showValidateSuccess: true,
-    },
-    {
-      name: 'phone',
-      label: 'Phone',
       type: 'string',
       showValidateSuccess: true,
     },

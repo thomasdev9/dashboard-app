@@ -1,4 +1,4 @@
-import { addProductSchema } from '../schemas';
+import { productSchema } from '../schemas';
 
 const initialValues = {
   title: '',
@@ -9,12 +9,12 @@ const initialValues = {
 
 export const formData = {
   initialValues: initialValues,
-  validationSchema: addProductSchema,
+  validationSchema: productSchema,
   layout: 'vertical',
-  className: 'add-product-form',
+  className: 'add-form',
   submitButton: {
     text: 'Add Product',
-    className: 'add-product_submit-button',
+    className: 'add-form_submit-button',
   },
   fields: [
     {
