@@ -77,6 +77,21 @@
   background-color: rgb(67, 56, 202) !important;
 }
 
+.add-customer-form {
+  width: 40%;
+}
+
+.add-customer_submit-button {
+  background-color: rgb(99, 102, 241);
+  box-shadow: rgba(0, 0, 0, 0.08) 0px 1px 5px 0px;
+  width: 150px;
+  height: 40px;
+}
+
+.add-customer_submit-button:hover {
+  background-color: rgb(67, 56, 202) !important;
+}
+
 .settings-form {
   width: 40%;
 }
@@ -114,6 +129,10 @@
   .settings-form {
     width: 70%;
   }
+
+  .add-customer-form {
+    width: 70%;
+  }
 }
 
 @media only screen and (max-width: 600px) {
@@ -126,6 +145,10 @@
   }
 
   .add-product-form {
+    width: 100%;
+  }
+
+  .add-customer-form {
     width: 100%;
   }
 
