@@ -6,6 +6,7 @@ import Products from '../pages/products';
 import Customers from '../pages/customers';
 import AddProduct from '../pages/add-product';
 import Settings from '../pages/settings';
+import AddCustomer from '../pages/add-customer';
 
 function Router() {
   return (
@@ -18,6 +19,7 @@ function Router() {
           <Route path="/customers" element={<Customers />} />
           <Route path="/add-product" element={<AddProduct />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/add-customer" element={<AddCustomer />} />
         </Route>
       </Routes>
     </BrowserRouter>

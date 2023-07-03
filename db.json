@@ -69,6 +69,28 @@
       "email": "jimmie@gmail.com",
       "name": "jimmie klein",
       "phone": "1-104-001-4567"
+    },
+    {
+      "title": "",
+      "image": "",
+      "price": 0,
+      "category": "",
+      "name": "Leonard",
+      "email": "leonard@gmail.com",
+      "address": "Boton 6030, Bristol",
+      "phone": "89789744234423",
+      "id": 11
+    },
+    {
+      "title": "",
+      "image": "",
+      "price": 0,
+      "category": "",
+      "name": "Chris Plarry",
+      "email": "chrisplarry@yahoo.gr",
+      "address": "Huffy 30, Leeds",
+      "phone": "48343974983423",
+      "id": 12
     }
   ],
   "products": [
