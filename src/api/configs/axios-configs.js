@@ -1,12 +1,9 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  withCredentials: true,
-  baseURL: 'http://localhost:3030',
+  baseURL: 'https://dashboard-elegent.onrender.com',
   headers: {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Credentials': true,
   },
 });
 

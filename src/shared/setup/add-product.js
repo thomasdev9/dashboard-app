@@ -14,7 +14,7 @@ export const formData = {
   className: 'add-form',
   submitButton: {
     text: 'Add Product',
-    className: 'add-form_submit-button',
+    className: 'add-form__submit-button',
   },
   fields: [
     {
