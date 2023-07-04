@@ -102,7 +102,7 @@ function Customers() {
       title: 'Are you sure you want to delete this customer?',
       icon: <ExclamationCircleFilled />,
       content: 'In case of deletion, the action is irreversible.',
-      okText: 'Διαγραφή',
+      okText: 'Delete',
       okType: 'danger',
       cancelText: 'Cancel',
       onOk() {
@@ -125,12 +125,12 @@ function Customers() {
               setSelectedCustomer(record?.id);
             }}
           >
-            <EditOutlined /> Επεξεργασία
+            <EditOutlined /> Edit
           </Button>
         </Menu.Item>
         <Menu.Item key="1">
           <Button type="link" danger onClick={() => showConfirm(record)}>
-            <DeleteOutlined /> Διαγραφή
+            <DeleteOutlined /> Delete
           </Button>
         </Menu.Item>
       </Menu>
